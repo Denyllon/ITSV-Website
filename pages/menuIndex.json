@@ -1,0 +1,17 @@
+{
+	"home": "home",
+	"about-company" : [
+						"about",
+						"cctv",
+						"helpdesk",
+						"hosting",
+						"lan",
+						"offer",
+						"outsourcing"
+	],
+	"software" : [
+						"cloud",
+						"optima"
+	],
+	"contact": "contact"
+}
