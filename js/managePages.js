@@ -52,7 +52,7 @@ function navbarActions() {
 		$('#content-page').empty().load('../pages/'+page+'.html', function(){
 			if((page === 'cloud') || (page === 'optima')) {
 				addForwardTo('contact');
-			} else if(page === 'home') {
+			} else if((page === 'home') || ( page === 'offer' )) {
 				addForwardTo('outsourcing');
 			} else return;
 		});
