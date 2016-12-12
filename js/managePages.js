@@ -1,14 +1,20 @@
-$(document).ready(function() {
-	
-	// Load homePage content
-	loadContent('home');
-	
-	// Bind navbar items actions
-	navbarActions();
-
-});
-
 function navbarActions() {
+    
+    // Remove class "active" from each element of navbar
+	function removeActiveClass() {
+		$('#navbar').find('*').removeClass('active');
+	};
+
+	// Bind click() actions to navbar positions
+	function bindAction(category, menuItem) {
+		$('#'+menuItem+'Page').click( function(event){
+			event.preventDefault();
+			loadContent(menuItem);
+			removeActiveClass();
+			$('.'+category+'-button').addClass('active');
+            $('.navbar-collapse').collapse('hide');
+		});
+	};
 
 	// Get navbar structure from JSON, and add actions for each navbar element
 	$.getJSON('pages/menuIndex.json', function(data) {
@@ -29,38 +35,38 @@ function navbarActions() {
 	$('.navbar-brand').click( function(event){
 		event.preventDefault();
 		loadContent('home');
-	})
-
-	// Remove class "active" from each element of navbar
-	function removeActiveClass() {
-		$('#navbar').find('*').removeClass('active');
-	};
-
-	// Bind click() actions to navbar positions
-	function bindAction(category, menuItem) {
-		$('#'+menuItem+'Page').click( function(event){
-			event.preventDefault();
-			loadContent(menuItem);
-			removeActiveClass();
-			$('.'+category+'-button').addClass('active');
-		});
-	}
+	});
 };
 
 // Load content & add actions to links
-	function loadContent(page) {
-		$('#content-page').empty().load('../pages/'+page+'.html', function(){
-			if((page === 'cloud') || (page === 'optima')) {
-				addForwardTo('contact');
-			} else if((page === 'home') || ( page === 'offer' )) {
-				addForwardTo('outsourcing');
-			} else return;
-		});
-	};
+function loadContent(page) {
+	$('#content-page').empty().load('../pages/'+page+'.html', function(){
+		if((page === 'cloud') || (page === 'optima')) {
+            addForwardTo('contact');
+        } else if((page === 'home') || ( page === 'offer' )) {
+            addForwardTo('outsourcing');
+        } else return;
+    });
+};
 
-	function addForwardTo(page) {
-		$('.forward-to-'+page).click( function(event) {
-			event.preventDefault();
-			loadContent(page);
-		});
-	}
+function addForwardTo(page) {
+    $('.forward-to-'+page).click( function(event) {
+		event.preventDefault();
+		loadContent(page);
+	});
+};
+
+$(document).ready(function() {
+	
+	// Load homePage content
+	loadContent('home');
+	
+	// Bind navbar items actions
+	navbarActions();
+    
+    $('.modal').click(function(){
+        $('.modal-open').css('overflow-y','inherit');
+    });
+        
+
+});

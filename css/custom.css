@@ -195,6 +195,8 @@ p {
     border-radius: 7px;
     font-size: 15px;
     line-height: 1.1;
+    max-width: 245px;
+    margin: 0 auto;
 }
 .col-centered {
     max-width: 500px;
@@ -315,9 +317,27 @@ p {
     padding: 20px;
     margin: 20px auto;
     width: 80%;
+    max-width: 400px;
     background-color: #ebebeb;
+}
+.colored ul {
+
+    max-width: 200px;
+    margin: 0 auto;
 }
 .colored li {
     text-align: left !important;
     font-size: 16px;
+    list-style-type: none; 
+    margin-bottom: 10px;
+}
+.colored li:before {
+    content: "\e013";
+    font-family: 'Glyphicons Halflings';
+    font-size: 13px;
+    float: left;
+    margin-top: 4px;
+    margin-left: -20px;
+    color: #2bb900;
+    
 }
